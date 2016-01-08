@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, InputActivity.class);
 
                 startActivityForResult(intent, 1);
-                ;
+
             }
         });
 
@@ -145,21 +145,22 @@ public class MainActivity extends AppCompatActivity {
         // 수행할 동작을 생성
         Intent intent = new Intent(this, AlarmReceive.class);   //AlarmReceive.class이클레스는 따로 만들꺼임 알람이 발동될때 동작하는 클레이스임
         PendingIntent pIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
-        //Intent intent = new Intent(this, MainActivity.class);   //AlarmReceive.class이클레스는 따로 만들꺼임 알람이 발동될때 동작하는 클레이스임
-        //PendingIntent pIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
+
+        // 우선 알람 해제  ... 먼저 설정되엇던 것이 잇을 지도 모르니...
+        mAlarmMgr.cancel(pIntent);
 
         // 알람이 발생할 정확한 시간을 지정
         Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 14, 00);//시간을 17시 45분으로 일단 set했음
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 16, 45);//시간을 17시 45분으로 일단 set했음
         calendar.set(Calendar.SECOND, 0);
 
 
         //알람 예약
         // 한번 알람
-        //mAlarmMgr.set(AlarmManager.RTC, calendar.getTimeInMillis(), pIntent);
         //mAlarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pIntent);
         //이건 여러번 알람 24*60*60*1000 이건 하루에한번 계속 알람한다는 뜻.
-        mAlarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 2 * 60 * 60 * 1000, pIntent);
+        mAlarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1 * 5 * 60 * 1000, pIntent);
+
 
 
     }
