@@ -13,7 +13,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -65,33 +64,20 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, arItem.get(position).getText(), Toast.LENGTH_SHORT).show();
 
-                /*
-                Intent intent = new Intent(MainActivity.this, SubActivity.class);
+                Intent intent = new Intent(MainActivity.this, ModifyActivity.class);
 
-                //intent.putExtras(extras);
-                intent.putExtra("list_text", arItem.get(position).getsListText());
+                intent.putExtra("id", arItem.get(position).getId());
+                intent.putExtra("text", arItem.get(position).getText());
 
                 startActivityForResult(intent, 1);
-                */
+
             }
         });
 
 
-        // 알람 관리자 핸들을 구한다
-        mAlarmMgr = (AlarmManager)getSystemService(ALARM_SERVICE);
+        // 알람 setting
         setAlarm();
-
-        // 수행할 동작을 생성
-
-        /*
-        Intent intent = new Intent(this, MainActivity.class);
-        PendingIntent pIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
-        // 알람 중지
-        mAlarmMgr.cancel(pIntent);
-        */
-
     }
 
     @Override
@@ -144,14 +130,18 @@ public class MainActivity extends AppCompatActivity {
     public void setAlarm() {
         // 수행할 동작을 생성
         Intent intent = new Intent(this, AlarmReceive.class);   //AlarmReceive.class이클레스는 따로 만들꺼임 알람이 발동될때 동작하는 클레이스임
-        PendingIntent pIntent = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+        //PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        // FLAG_UPDATE_CURRENT : 이미 생성된 PendingIntent 가 존재하면 해당 Intent 의 내용을 변경한다
+        PendingIntent pIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        mAlarmMgr = (AlarmManager)getSystemService(ALARM_SERVICE);
 
         // 우선 알람 해제  ... 먼저 설정되엇던 것이 잇을 지도 모르니...
         mAlarmMgr.cancel(pIntent);
 
         // 알람이 발생할 정확한 시간을 지정
         Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 16, 45);//시간을 17시 45분으로 일단 set했음
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 17, 37);//시간을 17시 45분으로 일단 set했음
         calendar.set(Calendar.SECOND, 0);
 
 
@@ -159,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         // 한번 알람
         //mAlarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pIntent);
         //이건 여러번 알람 24*60*60*1000 이건 하루에한번 계속 알람한다는 뜻.
-        mAlarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1 * 5 * 60 * 1000, pIntent);
+        mAlarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1 * 3 * 60 * 1000, pIntent);
 
 
 

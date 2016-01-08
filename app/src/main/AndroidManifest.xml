@@ -20,7 +20,10 @@
         </activity>
         <activity
             android:name=".InputActivity">
-          </activity>
+        </activity>
+        <activity
+            android:name=".ModifyActivity">
+        </activity>
 
         <receiver android:name=".AlarmReceive" android:enabled="true" />
     </application>
