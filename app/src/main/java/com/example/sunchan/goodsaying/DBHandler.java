@@ -50,7 +50,7 @@ public class DBHandler extends SQLiteOpenHelper {
     public long insertItem(Item item) {
         long lResult = 0;
 
-        // get reference of the ANNIVERSARYCOUNT database
+        // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getWritableDatabase();
 
         Log.d(TAG, "Text : " + item.getText());
@@ -71,7 +71,7 @@ public class DBHandler extends SQLiteOpenHelper {
     }
 
     public Item readItem(int id) {
-        // get reference of the ANNIVERSARYCOUNT database
+        // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getReadableDatabase();
 
         // get item query
@@ -95,7 +95,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // select book query
         String query = "SELECT  * FROM " + table_name;
 
-        // get reference of the ANNIVERSARYCOUNT database
+        // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
 
@@ -114,30 +114,30 @@ public class DBHandler extends SQLiteOpenHelper {
         return items;
     }
 
-    public int updateItem(Item item) {
+    public int updateItem(int id, String text) {
 
-        // get reference of the ANNIVERSARYCOUNT database
+        // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getWritableDatabase();
 
         // make values to be inserted
         ContentValues values = new ContentValues();
-        values.put(col_TEXT, item.getText());
+        values.put(col_TEXT, text);
 
         // update
-        int i = db.update(table_name, values, col_ID + " = ?", new String[] { String.valueOf(item.getId()) });
+        int i = db.update(table_name, values, col_ID + " = ?", new String[] { String.valueOf(id) });
 
         db.close();
         return i;
     }
 
     // Deleting single item
-    public void deleteItem(Item item) {
+    public void deleteItem(int id) {
 
-        // get reference of the ANNIVERSARYCOUNT database
+        // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getWritableDatabase();
 
         // delete book
-        db.delete(table_name, col_ID + " = ?", new String[] { String.valueOf(item.getId()) });
+        db.delete(table_name, col_ID + " = ?", new String[] { String.valueOf(id) });
         db.close();
     }
 }

@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:focusable="true"
+            android:gravity="right"
             >
             <Button
                 android:id="@+id/btn_update"

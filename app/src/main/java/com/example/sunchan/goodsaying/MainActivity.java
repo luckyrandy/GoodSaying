@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 알람 setting
-        setAlarm();
+        //setAlarm();
     }
 
     @Override
@@ -96,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            //Toast.makeText(this, "click click", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+            startActivity(intent);
             return true;
         }
 
@@ -141,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
         // 알람이 발생할 정확한 시간을 지정
         Calendar calendar = Calendar.getInstance();
-        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 17, 37);//시간을 17시 45분으로 일단 set했음
+        calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 18, 00);//시간을 17시 45분으로 일단 set했음
         calendar.set(Calendar.SECOND, 0);
 
 
@@ -149,9 +153,7 @@ public class MainActivity extends AppCompatActivity {
         // 한번 알람
         //mAlarmMgr.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pIntent);
         //이건 여러번 알람 24*60*60*1000 이건 하루에한번 계속 알람한다는 뜻.
-        mAlarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 1 * 3 * 60 * 1000, pIntent);
-
-
+        mAlarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 24 * 60 * 60 * 1000, pIntent);
 
     }
 }

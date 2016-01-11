@@ -2,30 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#ffffff"
     android:orientation="vertical" >
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:focusable="true"
+        android:gravity="right"
         >
-
-        <EditText android:id="@+id/edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:layout_margin="10dp"
-            android:maxLength="100"
-            android:textSize="18sp"
-            android:hint="@string/edit_hint" />
-
         <Button
-            android:id="@+id/btn_alarm"
+            android:id="@+id/btn_alarm_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Alarm"
+            android:text="@string/txt_cancel"
             android:background="#00000000"
             android:textColor="#4169E1"
             android:layout_gravity="right"
@@ -33,7 +24,7 @@
             android:onClick="onButtonClick"/>
 
         <Button
-            android:id="@+id/btn_save"
+            android:id="@+id/btn_alarm_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btn_save"
@@ -44,6 +35,35 @@
             android:onClick="onButtonClick"/>
 
     </LinearLayout>
+
+    <Switch
+        android:id="@+id/alarm_set"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:switchTextOff="@string/set_alarm_off"
+        android:switchTextOn="@string/set_alarm_on"
+        android:text="@string/set_alarm_title"
+        android:layout_gravity="right"
+        android:textSize="20sp"
+        />
+
+
+    <TimePicker
+        android:id="@+id/time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btn_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Setting"
+        android:background="#00000000"
+        android:textColor="#4169E1"
+        android:layout_gravity="right"
+        android:textSize="15sp"
+        android:onClick="onButtonClick"/>
 
 
 </LinearLayout>

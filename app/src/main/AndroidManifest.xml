@@ -24,6 +24,9 @@
         <activity
             android:name=".ModifyActivity">
         </activity>
+        <activity
+            android:name=".SettingActivity">
+        </activity>
 
         <receiver android:name=".AlarmReceive" android:enabled="true" />
     </application>
