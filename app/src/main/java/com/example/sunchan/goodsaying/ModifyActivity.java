@@ -1,19 +1,22 @@
 package com.example.sunchan.goodsaying;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class ModifyActivity extends Activity {
+public class ModifyActivity extends AppCompatActivity {
     private static final String TAG = "MY_DEBUG - ModifyActivity";
 
     private EditText edit_text;
+    private Toolbar mToolBar;
+
     private int mId;
     private String mText = "";
 
@@ -28,7 +31,7 @@ public class ModifyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.modify_layout);
 
-        edit_text = (EditText) findViewById(R.id.edit_text_update);
+        setupViews();
 
         Intent intent = getIntent();
 
@@ -38,6 +41,17 @@ public class ModifyActivity extends Activity {
         //Toast.makeText(this, Integer.toString(mId), Toast.LENGTH_SHORT).show();
         
         edit_text.setText(mText);
+    }
+
+
+    private void setupViews() {
+        edit_text = (EditText) findViewById(R.id.edit_text_update);
+
+        mToolBar = (Toolbar) findViewById(R.id.sub_toolbar);
+        setSupportActionBar(mToolBar);
+        //mToolBar.setNavigationIcon(R.drawable.ic_chevron_left_black_24dp);
+
+        getSupportActionBar().setTitle(R.string.update_title);
     }
 
     public void onButtonClick(View view) {

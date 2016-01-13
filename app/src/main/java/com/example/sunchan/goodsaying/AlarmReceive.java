@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 
 public class AlarmReceive extends BroadcastReceiver {   //BroadcastReceiver 가필요함
     private static final String R_TAG = "MY_DEBUG - AlarmReceive";
@@ -25,7 +24,7 @@ public class AlarmReceive extends BroadcastReceiver {   //BroadcastReceiver 가�
         PendingIntent pendingIntent = PendingIntent.getActivity(context.getApplicationContext(), 0 /* Request code */, intentAlarm,
                 PendingIntent.FLAG_ONE_SHOT);
 
-        String title = "Notification Test";
+        String title = "Good Saying";
         String txt = "알림 테스트";
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
