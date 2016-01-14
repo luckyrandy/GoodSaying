@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/bg">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/sub_toolbar"
@@ -19,19 +20,28 @@
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
         android:focusable="true"
         >
 
         <EditText android:id="@+id/edit_text"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff"
             android:layout_margin="10dp"
+            android:paddingTop="20dp"
             android:maxLength="100"
-            android:textSize="18sp"
-            android:hint="@string/edit_hint" />
+            android:textSize="20sp"
+            android:hint="@string/edit_hint"
+            android:background="@null"
+            >
+            <requestFocus />
+        </EditText>
 
+        <TextView
+            android:id="@+id/text_view_line"
+            android:layout_width="match_parent"
+            android:layout_height="3px"
+            android:background="#3399FF"
+            />
 
         <Button
             android:id="@+id/btn_save"
@@ -41,7 +51,7 @@
             android:background="#00000000"
             android:textColor="#4169E1"
             android:layout_gravity="right"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:onClick="onButtonClick"/>
 
     </LinearLayout>

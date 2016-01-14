@@ -14,9 +14,10 @@
     <string name="txt_update_done">수정 되었습니다</string>
     <string name="set_alarm_title">알람 설정</string>
     <string name="set_alarm_msg">알람 시간을 설정하세요</string>
-    <string name="set_alarm_on">설정</string>
-    <string name="set_alarm_off">해제</string>
+    <string name="set_alarm_on">On</string>
+    <string name="set_alarm_off">Off</string>
     <string name="set_alarm_off_msg">알람이 해제 되있습니다</string>
     <string name="insert_title">Good Saying 추가</string>
     <string name="update_title">Good Saying 수정</string>
+    <string name="btn_time">시간 설정</string>
 </resources>

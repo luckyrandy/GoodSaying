@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.ArrayList;
@@ -23,11 +25,15 @@ public class SettingActivity extends AppCompatActivity {
 
     private Switch mSwitch;
     private Button mTimeButton;
+    private TextView mTextView;
     private Toolbar mToolBar;
 
     private int iCount;
     private int iHour;
     private int iMin;
+
+    private String mEnabledColor = "#4169E1";
+    private String mDisabledColor = "#A8A8A8";
 
     DBHandler db = new DBHandler(this);
 
@@ -67,7 +73,8 @@ public class SettingActivity extends AppCompatActivity {
             iMin = c.get(Calendar.MINUTE);
 
             mTimeButton.setEnabled(false);
-            mTimeButton.setText(R.string.set_alarm_msg);
+            mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
+            mTextView.setText(R.string.set_alarm_msg);
         } else if (arItem.get(0).getFlag() == 0) {
             Log.d(TAG, "FLAG : " + String.valueOf(String.valueOf(arItem.get(0).getFlag())));
             Log.d(TAG, "HOUR : " + String.valueOf(String.valueOf(arItem.get(0).getHour())));
@@ -79,7 +86,8 @@ public class SettingActivity extends AppCompatActivity {
             iMin = arItem.get(0).getMin();
 
             mTimeButton.setEnabled(false);
-            mTimeButton.setText(R.string.set_alarm_off_msg);
+            mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
+            mTextView.setText(R.string.set_alarm_off_msg);
         } else if (arItem.get(0).getFlag() == 1) {
             Log.d(TAG, "STEP 1");
             Log.d(TAG, "FLAG : " + String.valueOf(String.valueOf(arItem.get(0).getFlag())));
@@ -93,7 +101,7 @@ public class SettingActivity extends AppCompatActivity {
 
             String time = String.valueOf(iHour) + "시 " +
                     String.valueOf(iMin) + "분에 알람이 설정 되었습니다";
-            mTimeButton.setText(time);
+            mTextView.setText(time);
         } else {
             mSwitch.setChecked(false);
 
@@ -103,7 +111,8 @@ public class SettingActivity extends AppCompatActivity {
             iMin = c.get(Calendar.MINUTE);
 
             mTimeButton.setEnabled(false);
-            mTimeButton.setText(R.string.set_alarm_msg);
+            mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
+            mTextView.setText(R.string.set_alarm_msg);
         }
 
         //set the switch to ON
@@ -117,12 +126,14 @@ public class SettingActivity extends AppCompatActivity {
                 if (isChecked) {
                     //Toast.makeText(SettingActivity.this, "Switch is currently ON", Toast.LENGTH_SHORT).show();
                     mTimeButton.setEnabled(true);
-                    mTimeButton.setText(R.string.set_alarm_msg);
+                    mTimeButton.setTextColor(Color.parseColor(mEnabledColor));
+                    mTextView.setText(R.string.set_alarm_msg);
                 } else {
                     //Toast.makeText(SettingActivity.this, "Switch is currently OFF", Toast.LENGTH_SHORT).show();
                     mTimeButton.setEnabled(false);
+                    mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
                     cancelAlarm();
-                    mTimeButton.setText(R.string.set_alarm_off_msg);
+                    mTextView.setText(R.string.set_alarm_off_msg);
                 }
 
             }
@@ -142,10 +153,11 @@ public class SettingActivity extends AppCompatActivity {
     private void setupViews() {
         mSwitch = (Switch) findViewById(R.id.alarm_set);
         mTimeButton = (Button) findViewById(R.id.btn_time);
+        mTextView = (TextView) findViewById(R.id.text_view);
 
         mToolBar = (Toolbar) findViewById(R.id.sub_toolbar);
         setSupportActionBar(mToolBar);
-        mToolBar.setNavigationIcon(R.drawable.ic_chevron_left_black_24dp);
+        //mToolBar.setNavigationIcon(R.drawable.ic_chevron_left_black_24dp);
         /* It doesn't work
         mToolBar.setTitle(R.string.set_alarm_title);
         */
@@ -183,7 +195,7 @@ public class SettingActivity extends AppCompatActivity {
 
             String time = String.valueOf(iHour) + "시 " +
                           String.valueOf(iMin) + "분에 알람이 설정 되었습니다";
-            mTimeButton.setText(time);
+            mTextView.setText(time);
 
             /*
             String time = "Hour: " + String.valueOf(hourOfDay) + "\n"

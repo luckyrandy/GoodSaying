@@ -1,9 +1,11 @@
 package com.example.sunchan.goodsaying;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -22,6 +24,13 @@ public class InputActivity extends AppCompatActivity {
         setContentView(R.layout.input_layout);
 
         setupViews();
+
+        edit_text.requestFocus();
+
+        //키보드 보이게 하는 부분
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
+
 
     }
 
