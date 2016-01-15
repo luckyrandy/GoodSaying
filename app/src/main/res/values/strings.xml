@@ -17,7 +17,8 @@
     <string name="set_alarm_on">On</string>
     <string name="set_alarm_off">Off</string>
     <string name="set_alarm_off_msg">알람이 해제 되있습니다</string>
-    <string name="insert_title">Good Saying 추가</string>
-    <string name="update_title">Good Saying 수정</string>
+    <string name="insert_title">좋은 글 추가</string>
+    <string name="update_title">좋은 글 수정</string>
     <string name="btn_time">시간 설정</string>
+    <string name="noti_title">오늘의 좋은 글</string>
 </resources>

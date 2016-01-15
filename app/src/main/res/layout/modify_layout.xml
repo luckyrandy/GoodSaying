@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg_noti">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/sub_toolbar"
@@ -70,6 +70,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
 
 </LinearLayout>

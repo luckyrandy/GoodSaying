@@ -10,7 +10,7 @@ import android.util.Log;
 import java.util.ArrayList;
 
 public class DBHandler extends SQLiteOpenHelper {
-    private static final String TAG = "DEBUG - DBHandler";
+    private static final String TAG = "MYD - DBHandler";
 
     // database version
     private static final int database_VERSION = 1;
@@ -22,8 +22,9 @@ public class DBHandler extends SQLiteOpenHelper {
     // colunm name
     private static final String col_ID = "ID";
     private static final String col_TEXT = "TEXT";
+    private static final String col_COUNT = "COUNT";
 
-    private static final String[] COLUMNS = { col_ID, col_TEXT };
+    private static final String[] COLUMNS = { col_ID, col_TEXT, col_COUNT };
 
 
     // table name for Alarm
@@ -46,7 +47,8 @@ public class DBHandler extends SQLiteOpenHelper {
         // SQL statement to create main table
         String CREATE_TABLE = "CREATE TABLE IF NOT EXISTS GOODSAYING ( "
                 + "ID INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + "TEXT TEXT)";
+                + "TEXT TEXT, "
+                + "COUNT INTEGER)";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -77,10 +79,12 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Log.d(TAG, "Text : " + item.getText());
+        Log.d(TAG, "Count : " + String.valueOf(item.getCount()));
 
         // make values to be inserted
         ContentValues values = new ContentValues();
         values.put(col_TEXT, item.getText());
+        values.put(col_COUNT, item.getCount());
 
         // insert anniversary
         lResult = db.insert(table_name, null, values);
@@ -108,6 +112,7 @@ public class DBHandler extends SQLiteOpenHelper {
         Item item = new Item();
         item.setId(Integer.parseInt(cursor.getString(0)));
         item.setText(cursor.getString(1));
+        item.setCount(Integer.parseInt(cursor.getString(2)));
 
         return item;
     }
@@ -129,6 +134,7 @@ public class DBHandler extends SQLiteOpenHelper {
                 item = new Item();
                 item.setId(Integer.parseInt(cursor.getString(0)));
                 item.setText(cursor.getString(1));
+                item.setCount(Integer.parseInt(cursor.getString(2)));
 
                 // Add anniversary to items
                 items.add(item);
@@ -137,14 +143,19 @@ public class DBHandler extends SQLiteOpenHelper {
         return items;
     }
 
-    public int updateItem(int id, String text) {
+    public int updateItem(int id, String text, int count) {
 
         // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getWritableDatabase();
 
+        Log.d(TAG, "Id : " + id);
+        Log.d(TAG, "Text : " + text);
+        Log.d(TAG, "Count : " + count);
+
         // make values to be inserted
         ContentValues values = new ContentValues();
         values.put(col_TEXT, text);
+        values.put(col_COUNT, count);
 
         // update
         int i = db.update(table_name, values, col_ID + " = ?", new String[] { String.valueOf(id) });
@@ -175,9 +186,9 @@ public class DBHandler extends SQLiteOpenHelper {
         // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Log.d(TAG, "FLAG : " + item.getFlag());
-        Log.d(TAG, "HOUR : " + item.getHour());
-        Log.d(TAG, "MINUTE : " + item.getMin());
+        //Log.d(TAG, "FLAG : " + item.getFlag());
+        //Log.d(TAG, "HOUR : " + item.getHour());
+        //Log.d(TAG, "MINUTE : " + item.getMin());
 
         // make values to be inserted
         ContentValues values = new ContentValues();
@@ -188,7 +199,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // insert anniversary
         lResult = db.insert(alarm_table_name, null, values);
 
-        Log.d(TAG, "Insert result : " + lResult);
+        //Log.d(TAG, "Insert result : " + lResult);
 
         // close database transaction
         db.close();
@@ -232,8 +243,66 @@ public class DBHandler extends SQLiteOpenHelper {
 
         // delete alarmitem
         String query = "DELETE FROM " + alarm_table_name;
-        Log.d(TAG, query);
+
         db.execSQL(query);
         db.close();
     }
+
+
+    public int getMaxCount() {
+        int iCount = 0;
+
+        // get reference of the GOODSAYING database
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + table_name;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        if (cursor.getCount() == 0)
+            return iCount;
+
+        query = "";
+        query = "SELECT MAX(COUNT) FROM " + table_name;
+
+        cursor = db.rawQuery(query, null);
+
+        // if results !=null, parse the first one
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            iCount = Integer.parseInt(cursor.getString(0));
+        }
+
+        return iCount;
+    }
+
+
+    public Item getNotiItem() {
+        Item item = null;
+
+        String query = "SELECT * FROM " + table_name + " ORDER BY COUNT, ID";
+
+        // get reference of the GOODSAYING database
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        // if results !=null, parse the first one
+
+        if (cursor.getCount() == 0)
+            return item;
+
+        cursor.moveToFirst();
+
+        item = new Item();
+        item.setId(Integer.parseInt(cursor.getString(0)));
+        item.setText(cursor.getString(1));
+        item.setCount(Integer.parseInt(cursor.getString(2)));
+
+        Log.d(TAG, "Id : " + String.valueOf(item.getId()));
+        Log.d(TAG, "Text : " + item.getText());
+        Log.d(TAG, "Count : " + String.valueOf(item.getCount()));
+
+        return item;
+    }
+
 }

@@ -15,7 +15,13 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MY_DEBUG - MainActivity";
+    private static final String TAG = "MYD - MainActivity";
+
+    private static final String DEFAULT_1 = "나는 매일 모든 면에서 점점 더 좋아지고 있다";
+    private static final String DEFAULT_2 = "매일 새로운 마음으로 임하자";
+    private static final String DEFAULT_3 = "하면 할 수 있다";
+    private static final String DEFAULT_4 = "웃자 ^^";
+    private static final String DEFAULT_5 = "차분하게 준비하면서 기다리면 반드시 좋은 기회가 온다";
 
     private ListView listView;
 
@@ -52,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
         getAllItem();
 
+        if (arItem.size() == 0) {
+            insertDefaultItems();
+            getAllItem();
+        }
+
         // ListView와 Adapter 연결
         listView = (ListView)this.findViewById(R.id.list_view);
         listAdapter = new CustomList(getApplicationContext(), R.layout.list_layout, arItem);
@@ -66,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
                 intent.putExtra("id", arItem.get(position).getId());
                 intent.putExtra("text", arItem.get(position).getText());
+                intent.putExtra("count", arItem.get(position).getCount());
 
                 startActivityForResult(intent, 1);
 
@@ -104,12 +116,15 @@ public class MainActivity extends AppCompatActivity {
     public void getAllItem() {
         arItem = db.getAllItems();
 
+        Log.d(TAG, "============================================================");
         for (int i = 0; i < arItem.size(); i++) {
-            Log.d(TAG, "ID : " + arItem.get(i).getId());
-            Log.d(TAG, "TEXT : " + arItem.get(i).getText());
+            Log.d(TAG, "ID : " + arItem.get(i).getId()
+                    + ", TEXT : " + arItem.get(i).getText()
+                    + ", COUNT : " + arItem.get(i).getCount());
 
             arItem.get(i).setText(arItem.get(i).getText());
         }
+        Log.d(TAG, "============================================================");
     }
 
 
@@ -122,6 +137,15 @@ public class MainActivity extends AppCompatActivity {
 
         listAdapter.setArrayList(arItem);
         listAdapter.notifyDataSetChanged();
+    }
+
+
+    public void insertDefaultItems() {
+        db.insertItem(new Item(DEFAULT_1, 1));
+        db.insertItem(new Item(DEFAULT_2, 1));
+        db.insertItem(new Item(DEFAULT_3, 1));
+        db.insertItem(new Item(DEFAULT_4, 1));
+        db.insertItem(new Item(DEFAULT_5, 1));
     }
 
 }

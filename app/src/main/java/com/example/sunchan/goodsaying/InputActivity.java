@@ -4,17 +4,20 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class InputActivity extends AppCompatActivity {
-    private static final String TAG = "MY_DEBUG - InputActivity";
+    private static final String TAG = "MYD - InputAct";
 
     private EditText edit_text;
-    private String mUserInput = "";
     private Toolbar mToolBar;
+
+    private String mUserInput = "";
+    private int mCount;
 
     DBHandler db = new DBHandler(this);
 
@@ -64,8 +67,18 @@ public class InputActivity extends AppCompatActivity {
             return;
         }
 
+        mCount = db.getMaxCount();
+
+        Log.d(TAG, "MAX COUNT : " + String.valueOf(mCount));
+
+        if (mCount > 1) {
+            mCount -= 1;
+        } else {
+            mCount = 1;
+        }
+
         // insert to DB
-        if (db.insertItem(new Item(mUserInput)) > 0) {
+        if (db.insertItem(new Item(mUserInput, mCount)) > 0) {
             Toast.makeText(this, R.string.insert_ok, Toast.LENGTH_SHORT).show();
             finish();       // 저장 후 엑티비티 종료
         } else {

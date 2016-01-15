@@ -27,6 +27,9 @@
         <activity
             android:name=".SettingActivity">
         </activity>
+        <activity
+            android:name=".NotiActivity">
+        </activity>
 
         <receiver android:name=".AlarmReceive" android:enabled="true" />
     </application>

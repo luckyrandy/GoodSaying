@@ -9,19 +9,19 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 
 public class SettingActivity extends AppCompatActivity {
-    private static final String TAG = "DEBUG - SettingActivity";
+    private static final String TAG = "MYD - SettingActivity";
 
     private Switch mSwitch;
     private Button mTimeButton;
@@ -56,13 +56,14 @@ public class SettingActivity extends AppCompatActivity {
         arItem = db.getAllAlarmItem();
         iCount = arItem.size();
 
+        /*
         Log.d(TAG, "SIZE : " + String.valueOf(iCount));
         for (int i = 0; i < arItem.size(); i++) {
             Log.d(TAG, "flag : " + arItem.get(i).getFlag());
             Log.d(TAG, "hour : " + arItem.get(i).getHour());
             Log.d(TAG, "min : " + arItem.get(i).getMin());
-
         }
+        */
 
         if (iCount == 0) {
             mSwitch.setChecked(false);
@@ -76,10 +77,6 @@ public class SettingActivity extends AppCompatActivity {
             mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
             mTextView.setText(R.string.set_alarm_msg);
         } else if (arItem.get(0).getFlag() == 0) {
-            Log.d(TAG, "FLAG : " + String.valueOf(String.valueOf(arItem.get(0).getFlag())));
-            Log.d(TAG, "HOUR : " + String.valueOf(String.valueOf(arItem.get(0).getHour())));
-            Log.d(TAG, "MINUTE : " + String.valueOf(String.valueOf(arItem.get(0).getMin())));
-
             mSwitch.setChecked(false);
             // 이전 설정 시간으로 초기화
             iHour = arItem.get(0).getHour();
@@ -89,11 +86,6 @@ public class SettingActivity extends AppCompatActivity {
             mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
             mTextView.setText(R.string.set_alarm_off_msg);
         } else if (arItem.get(0).getFlag() == 1) {
-            Log.d(TAG, "STEP 1");
-            Log.d(TAG, "FLAG : " + String.valueOf(String.valueOf(arItem.get(0).getFlag())));
-            Log.d(TAG, "HOUR : " + String.valueOf(String.valueOf(arItem.get(0).getHour())));
-            Log.d(TAG, "MINUTE : " + String.valueOf(String.valueOf(arItem.get(0).getMin())));
-
             mSwitch.setChecked(true);
 
             iHour = arItem.get(0).getHour();
@@ -134,6 +126,8 @@ public class SettingActivity extends AppCompatActivity {
                     mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
                     cancelAlarm();
                     mTextView.setText(R.string.set_alarm_off_msg);
+
+                    Toast.makeText(SettingActivity.this, R.string.set_alarm_off_msg, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -197,11 +191,7 @@ public class SettingActivity extends AppCompatActivity {
                           String.valueOf(iMin) + "분에 알람이 설정 되었습니다";
             mTextView.setText(time);
 
-            /*
-            String time = "Hour: " + String.valueOf(hourOfDay) + "\n"
-                    + "Minute: " + String.valueOf(minute);
-            Toast.makeText(SettingActivity.this, time, Toast.LENGTH_LONG).show();
-            */
+            Toast.makeText(SettingActivity.this, time, Toast.LENGTH_SHORT).show();
 
         }
     };
@@ -209,7 +199,7 @@ public class SettingActivity extends AppCompatActivity {
 
     public void setAlarm() {
         long triggerTime = 0;
-        long intervalTime = 24 * 60 * 60 * 1000;// 24시간
+        long intervalTime = 24 * 60 * 60 * 1000;    // 24시간
 
         // 우선 알람 해제  ... 먼저 설정되엇던 것이 잇을 지도 모르니...
         cancelAlarm();

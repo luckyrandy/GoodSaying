@@ -12,13 +12,14 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class ModifyActivity extends AppCompatActivity {
-    private static final String TAG = "MY_DEBUG - ModifyActivity";
+    private static final String TAG = "MYD - ModifyActivity";
 
-    private EditText edit_text;
+    private EditText mEditText;
     private Toolbar mToolBar;
 
     private int mId;
     private String mText = "";
+    private int mCount;
 
     private String mUserInput = "";
 
@@ -37,15 +38,16 @@ public class ModifyActivity extends AppCompatActivity {
 
         mId = intent.getIntExtra("id", -1);
         mText = intent.getStringExtra("text");
+        mCount = intent.getIntExtra("count", -1);
 
         //Toast.makeText(this, Integer.toString(mId), Toast.LENGTH_SHORT).show();
-        
-        edit_text.setText(mText);
+
+        mEditText.setText(mText);
     }
 
 
     private void setupViews() {
-        edit_text = (EditText) findViewById(R.id.edit_text_update);
+        mEditText = (EditText) findViewById(R.id.edit_text_update);
 
         mToolBar = (Toolbar) findViewById(R.id.sub_toolbar);
         setSupportActionBar(mToolBar);
@@ -69,15 +71,15 @@ public class ModifyActivity extends AppCompatActivity {
 
 
     public void updateItem() {
-        mUserInput = edit_text.getText().toString();
+        mUserInput = mEditText.getText().toString();
 
         if (mUserInput == null || mUserInput.length() == 0) {
             Toast.makeText(this, R.string.warn_text, Toast.LENGTH_SHORT).show();
-            edit_text.requestFocus();       // focus on
+            mEditText.requestFocus();       // focus on
             return;
         }
 
-        db.updateItem(mId, mUserInput);
+        db.updateItem(mId, mUserInput, mCount);
 
         Toast.makeText(ModifyActivity.this, R.string.txt_update_done, Toast.LENGTH_SHORT).show();
         finish();           // Activity 종료

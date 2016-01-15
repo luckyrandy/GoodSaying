@@ -3,12 +3,14 @@ package com.example.sunchan.goodsaying;
 public class Item {
     private int iId;
     private String sText;
+    private int iCount;
 
     public Item(){}
 
-    public Item(String sText) {
+    public Item(String sText, int iCount) {
         super();
         this.sText = sText;
+        this.iCount = iCount;
     }
 
     public int getId() {
@@ -25,5 +27,13 @@ public class Item {
 
     public void setText(String sText) {
         this.sText = sText;
+    }
+
+    public int getCount() {
+        return iCount;
+    }
+
+    public void setCount(int iCount) {
+        this.iCount = iCount;
     }
 }
