@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">나만의 좋은 글</string>
+    <string name="action_settings">알람 설정</string>
+    <string name="edit_hint">좋은 글을 입력하세요</string>
+    <string name="btn_save">저장</string>
+    <string name="btn_update">수정</string>
+    <string name="btn_delete">삭제</string>
+    <string name="warn_text">내용을 입력하세요</string>
+    <string name="insert_ok">저장 되었습니다</string>
+    <string name="insert_fail">저장에 실패 하였습니다</string>
+    <string name="dial_del_msg">삭제 하시겠습니까?</string>
+    <string name="txt_cancel">취소</string>
+    <string name="txt_delete_done">삭제 되었습니다</string>
+    <string name="txt_update_done">수정 되었습니다</string>
+    <string name="set_alarm_title">알람 설정</string>
+    <string name="set_alarm_msg">알람 시간을 설정하세요</string>
+    <string name="set_alarm_on">On</string>
+    <string name="set_alarm_off">Off</string>
+    <string name="set_alarm_off_msg">알람이 해제 되있습니다</string>
+    <string name="insert_title">좋은 글 추가</string>
+    <string name="update_title">좋은 글 수정</string>
+    <string name="btn_time">시간 설정</string>
+    <string name="set_alarm_done_msg">에 알람이 설정 되었습니다</string>
+
+    <string name="default_1">이 세상에서 가장 행복한 사람은\n일하는 사람,\n사랑하는 사람,\n희망이 있는 사람이다</string>
+    <string name="default_2">좋은 일을 생각하면 좋은 일이 생긴다.\n나쁜 일을 생각하면 나쁜 일이 생긴다.\n여러분은 여러분이 하루 종일 생각하고 있는 것 바로 그것이다.</string>
+    <string name="default_3">우리는 다른 사람이 가진 것을 부러워하지만,\n다른 사람은 우리가 가진 것을 부러워하고 있다</string>
+    <string name="default_4">시도해보지도 않고는 누구도 자신이 얼마만큼 해 낼 수 있는지 알지 못한다</string>
+    <string name="default_5">잔잔한 바다에서는 좋은 뱃사공이 만들어지지 않는다</string>
+    <string name="default_6">미래를 신뢰하지 마라,\n죽은 과거는 묻어버려라,\n그리고 살아있는 현재에 행동하라.</string>
+    <string name="default_7">계단을 밟아야 계단 위에 올라설 수 있다</string>
+    <string name="default_8">모든 위대한 사업에도 최초에는 불가능한 일이라고 했던 것들입니다</string>
+    <string name="default_9">남의 생활과 비교하지 말고 네 자신의 생활을 즐겨라</string>
+    <string name="default_10">내일은 시련에 대응하는 새로운 힘을 가져다 줄 것이다</string>
+
+</resources>

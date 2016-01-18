@@ -91,8 +91,9 @@ public class SettingActivity extends AppCompatActivity {
             iHour = arItem.get(0).getHour();
             iMin = arItem.get(0).getMin();
 
-            String time = String.valueOf(iHour) + "시 " +
-                    String.valueOf(iMin) + "분에 알람이 설정 되었습니다";
+            String time = String.format("%02d", iHour) + ":" +
+                    String.format("%02d", iMin) + " " +
+                    getString(R.string.set_alarm_done_msg);
             mTextView.setText(time);
         } else {
             mSwitch.setChecked(false);
@@ -187,8 +188,10 @@ public class SettingActivity extends AppCompatActivity {
 
             setAlarm();
 
-            String time = String.valueOf(iHour) + "시 " +
-                          String.valueOf(iMin) + "분에 알람이 설정 되었습니다";
+            String time = String.format("%02d", iHour) + ":" +
+                          String.format("%02d", iMin) + " " +
+                          getString(R.string.set_alarm_done_msg);
+
             mTextView.setText(time);
 
             Toast.makeText(SettingActivity.this, time, Toast.LENGTH_SHORT).show();

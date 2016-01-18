@@ -1,24 +1,36 @@
 <resources>
     <string name="app_name">Good Saying</string>
-    <string name="action_settings">알람 설정</string>
-    <string name="edit_hint">좋은 글을 입력하세요</string>
-    <string name="btn_save">저장</string>
-    <string name="btn_update">수정</string>
-    <string name="btn_delete">삭제</string>
-    <string name="warn_text">내용을 입력하세요</string>
-    <string name="insert_ok">저장 되었습니다</string>
-    <string name="insert_fail">저장에 실패 하였습니다</string>
-    <string name="dial_del_msg">삭제 하시겠습니까?</string>
-    <string name="txt_cancel">취소</string>
-    <string name="txt_delete_done">삭제 되었습니다</string>
-    <string name="txt_update_done">수정 되었습니다</string>
-    <string name="set_alarm_title">알람 설정</string>
-    <string name="set_alarm_msg">알람 시간을 설정하세요</string>
+    <string name="action_settings">Setting Alarm</string>
+    <string name="edit_hint">write your good saying</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_update">Update</string>
+    <string name="btn_delete">Delete</string>
+    <string name="warn_text">write your good saying</string>
+    <string name="insert_ok">Saved</string>
+    <string name="insert_fail">Failed to save</string>
+    <string name="dial_del_msg">Are you sure you want to delete it?</string>
+    <string name="txt_cancel">Cancel</string>
+    <string name="txt_delete_done">Deleted</string>
+    <string name="txt_update_done">Updated</string>
+    <string name="set_alarm_title">Alarm</string>
+    <string name="set_alarm_msg">Please, set your alarm time</string>
     <string name="set_alarm_on">On</string>
     <string name="set_alarm_off">Off</string>
-    <string name="set_alarm_off_msg">알람이 해제 되있습니다</string>
-    <string name="insert_title">좋은 글 추가</string>
-    <string name="update_title">좋은 글 수정</string>
-    <string name="btn_time">시간 설정</string>
-    <string name="noti_title">오늘의 좋은 글</string>
+    <string name="set_alarm_off_msg">Alarm has been turned off</string>
+    <string name="insert_title">Add Your Good Saying</string>
+    <string name="update_title">Update Your Good Saying</string>
+    <string name="btn_time">Setting Time</string>
+    <string name="set_alarm_done_msg">Alarm time has been set</string>
+
+    <string name="default_1">Pain past is pleasure</string>
+    <string name="default_2">Ability is decided by one\'s own effort</string>
+    <string name="default_3">The future depends on what we do in the present</string>
+    <string name="default_4">The first step is always the hardest</string>
+    <string name="default_5">The real effort never betrays me</string>
+    <string name="default_6">No pain,\nno gain</string>
+    <string name="default_7">If at first you didn\'t succeed, try, try again\nNever, never, never, give up!</string>
+    <string name="default_8">Build a dream and the dream will build you</string>
+    <string name="default_9">Every path has its puddle</string>
+    <string name="default_10">Success doesn\'t come overnight</string>
+
 </resources>

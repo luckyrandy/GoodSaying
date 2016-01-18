@@ -22,10 +22,10 @@ public class AlarmReceive extends BroadcastReceiver {   //BroadcastReceiver ê°€í
             return;
         }
 
-        String title = "Good Saying";
+        String title = context.getString(R.string.app_name);
         String txt = mItem.getText();
 
-        Intent intentAlarm = new Intent(context.getApplicationContext(), NotiActivity.class);
+        Intent intentAlarm = new Intent(context.getApplicationContext(), MainActivity.class);
         intentAlarm.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intentAlarm.putExtra("text", txt);
 
@@ -34,14 +34,6 @@ public class AlarmReceive extends BroadcastReceiver {   //BroadcastReceiver ê°€í
 
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(context.getApplicationContext())
-                .setSmallIcon(R.drawable.ic_launcher)
-                .setContentTitle(title)
-                .setContentText(txt)
-                .setAutoCancel(true)
-                .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent);
-
 
         NotificationCompat.Builder mCompatBuilder = new NotificationCompat.Builder(context.getApplicationContext());
         mCompatBuilder.setSmallIcon(R.drawable.ic_launcher);

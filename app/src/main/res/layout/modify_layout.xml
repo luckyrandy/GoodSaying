@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg_noti">
+    android:background="@drawable/bg">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/sub_toolbar"
@@ -23,14 +23,22 @@
         android:focusable="true"
         >
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
         <EditText android:id="@+id/edit_text_update"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:paddingTop="20dp"
+            android:paddingBottom="10dp"
             android:maxLength="100"
             android:background="@null"
             android:textSize="20sp" />
+
+        </ScrollView>
 
         <TextView
             android:id="@+id/text_view_line"
@@ -38,6 +46,7 @@
             android:layout_height="3px"
             android:background="#3399FF"
             />
+
 
         <LinearLayout
             android:layout_width="fill_parent"

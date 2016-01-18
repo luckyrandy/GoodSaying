@@ -17,12 +17,6 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MYD - MainActivity";
 
-    private static final String DEFAULT_1 = "나는 매일 모든 면에서 점점 더 좋아지고 있다";
-    private static final String DEFAULT_2 = "매일 새로운 마음으로 임하자";
-    private static final String DEFAULT_3 = "하면 할 수 있다";
-    private static final String DEFAULT_4 = "웃자 ^^";
-    private static final String DEFAULT_5 = "차분하게 준비하면서 기다리면 반드시 좋은 기회가 온다";
-
     private ListView listView;
 
     DBHandler db = new DBHandler(this);
@@ -68,11 +62,27 @@ public class MainActivity extends AppCompatActivity {
         listAdapter = new CustomList(getApplicationContext(), R.layout.list_layout, arItem);
         listView.setAdapter(listAdapter);
 
-         // 항목 [클릭]시의 이벤트 리스너를 등록
+        // 항목 클릭 시의 이벤트 리스너를 등록 -> NotiActivity 화면으로
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+                Intent intent = new Intent(MainActivity.this, NotiActivity.class);
+
+                intent.putExtra("id", arItem.get(position).getId());
+                intent.putExtra("text", arItem.get(position).getText());
+                intent.putExtra("count", arItem.get(position).getCount());
+
+                startActivity(intent);
+
+            }
+        });
+
+
+        // 항목 롱 클릭 시의 이벤트 리스너를 등록 -> 수정/삭제 화면으로
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MainActivity.this, ModifyActivity.class);
 
                 intent.putExtra("id", arItem.get(position).getId());
@@ -81,8 +91,23 @@ public class MainActivity extends AppCompatActivity {
 
                 startActivityForResult(intent, 1);
 
+                return true;
             }
         });
+
+
+        // Notification 받고 알림 클릭시 해당 메시지 받는 부분
+        Intent mainIntent = getIntent();
+        String txt = mainIntent.getStringExtra("text");
+        if (txt != null) {
+            Log.d(TAG, "Received MSG : " + txt);
+
+            Intent notiIntent = new Intent(MainActivity.this, NotiActivity.class);
+            notiIntent.putExtra("text", txt);
+            startActivity(notiIntent);
+        } else {
+            Log.d(TAG, "Received MSG is null");
+        }
 
     }
 
@@ -141,11 +166,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void insertDefaultItems() {
-        db.insertItem(new Item(DEFAULT_1, 1));
-        db.insertItem(new Item(DEFAULT_2, 1));
-        db.insertItem(new Item(DEFAULT_3, 1));
-        db.insertItem(new Item(DEFAULT_4, 1));
-        db.insertItem(new Item(DEFAULT_5, 1));
+        db.insertItem(new Item(getString(R.string.default_1), 1));
+        db.insertItem(new Item(getString(R.string.default_2), 1));
+        db.insertItem(new Item(getString(R.string.default_3), 1));
+        db.insertItem(new Item(getString(R.string.default_4), 1));
+        db.insertItem(new Item(getString(R.string.default_5), 1));
+        db.insertItem(new Item(getString(R.string.default_6), 1));
+        db.insertItem(new Item(getString(R.string.default_7), 1));
+        db.insertItem(new Item(getString(R.string.default_8), 1));
+        db.insertItem(new Item(getString(R.string.default_9), 1));
+        db.insertItem(new Item(getString(R.string.default_10), 1));
     }
 
 }

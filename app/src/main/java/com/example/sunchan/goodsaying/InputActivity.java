@@ -19,6 +19,8 @@ public class InputActivity extends AppCompatActivity {
     private String mUserInput = "";
     private int mCount;
 
+    private InputMethodManager imm;
+
     DBHandler db = new DBHandler(this);
 
     @Override
@@ -31,7 +33,7 @@ public class InputActivity extends AppCompatActivity {
         edit_text.requestFocus();
 
         //키보드 보이게 하는 부분
-        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, InputMethodManager.HIDE_IMPLICIT_ONLY);
 
 
@@ -42,6 +44,9 @@ public class InputActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_save:         // 저장 버튼 설정
                 insertItem();
+                //키보드를 없앤다.
+                imm.hideSoftInputFromWindow(edit_text.getWindowToken(),0);
+
                 break;
         }
     }
