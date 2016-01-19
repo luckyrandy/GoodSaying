@@ -41,13 +41,13 @@ public class CustomList extends BaseAdapter {
 
         if (v == null) {
             LayoutInflater li = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = li.inflate(R.layout.list_layout, null);
+            v = li.inflate(com.example.sunchan.goodsaying.R.layout.list_layout, null);
         }
 
         final Item item = arrayItem.get(pos);
 
         if (item != null) {
-            TextView txt = (TextView) v.findViewById(R.id.text_view);
+            TextView txt = (TextView) v.findViewById(com.example.sunchan.goodsaying.R.id.text_view);
             txt.setText(arrayItem.get(pos).getText());
         }
 

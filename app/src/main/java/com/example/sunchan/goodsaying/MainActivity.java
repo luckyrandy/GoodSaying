@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -100,13 +99,13 @@ public class MainActivity extends AppCompatActivity {
         Intent mainIntent = getIntent();
         String txt = mainIntent.getStringExtra("text");
         if (txt != null) {
-            Log.d(TAG, "Received MSG : " + txt);
+            //Log.d(TAG, "Received MSG : " + txt);
 
             Intent notiIntent = new Intent(MainActivity.this, NotiActivity.class);
             notiIntent.putExtra("text", txt);
             startActivity(notiIntent);
         } else {
-            Log.d(TAG, "Received MSG is null");
+            //Log.d(TAG, "Received MSG is null");
         }
 
     }
@@ -141,15 +140,12 @@ public class MainActivity extends AppCompatActivity {
     public void getAllItem() {
         arItem = db.getAllItems();
 
-        Log.d(TAG, "============================================================");
+        //Log.d(TAG, "============================================================");
         for (int i = 0; i < arItem.size(); i++) {
-            Log.d(TAG, "ID : " + arItem.get(i).getId()
-                    + ", TEXT : " + arItem.get(i).getText()
-                    + ", COUNT : " + arItem.get(i).getCount());
-
+            //Log.d(TAG, "ID : " + arItem.get(i).getId() + ", TEXT : " + arItem.get(i).getText() + ", COUNT : " + arItem.get(i).getCount());
             arItem.get(i).setText(arItem.get(i).getText());
         }
-        Log.d(TAG, "============================================================");
+        //Log.d(TAG, "============================================================");
     }
 
 
@@ -166,16 +162,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void insertDefaultItems() {
-        db.insertItem(new Item(getString(R.string.default_1), 1));
-        db.insertItem(new Item(getString(R.string.default_2), 1));
-        db.insertItem(new Item(getString(R.string.default_3), 1));
-        db.insertItem(new Item(getString(R.string.default_4), 1));
-        db.insertItem(new Item(getString(R.string.default_5), 1));
-        db.insertItem(new Item(getString(R.string.default_6), 1));
-        db.insertItem(new Item(getString(R.string.default_7), 1));
-        db.insertItem(new Item(getString(R.string.default_8), 1));
-        db.insertItem(new Item(getString(R.string.default_9), 1));
-        db.insertItem(new Item(getString(R.string.default_10), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_1), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_2), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_3), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_4), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_5), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_6), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_7), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_8), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_9), 1));
+        db.insertItem(new Item(getString(com.example.sunchan.goodsaying.R.string.default_10), 1));
     }
 
 }

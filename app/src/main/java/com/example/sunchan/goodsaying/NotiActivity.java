@@ -19,7 +19,7 @@ public class NotiActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.noti_layout);
+        setContentView(com.example.sunchan.goodsaying.R.layout.noti_layout);
 
         setupViews();
 
@@ -34,17 +34,17 @@ public class NotiActivity extends AppCompatActivity {
 
 
     private void setupViews() {
-        mTextView = (TextView) findViewById(R.id.noti_text_view);
+        mTextView = (TextView) findViewById(com.example.sunchan.goodsaying.R.id.noti_text_view);
         // TextView Scroll Enable
         mTextView.setMovementMethod(new ScrollingMovementMethod());
         // Set Font
         mTextView.setTypeface(Typeface.createFromAsset(getAssets(), "NanumPen.ttf"));
 
-        mToolBar = (Toolbar) findViewById(R.id.sub_toolbar);
+        mToolBar = (Toolbar) findViewById(com.example.sunchan.goodsaying.R.id.sub_toolbar);
         setSupportActionBar(mToolBar);
-        getSupportActionBar().setTitle(R.string.app_name);   /* It works */
+        getSupportActionBar().setTitle(com.example.sunchan.goodsaying.R.string.app_name);   /* It works */
 
-        mLayout = (LinearLayout) findViewById(R.id.noti_layout);
+        mLayout = (LinearLayout) findViewById(com.example.sunchan.goodsaying.R.id.noti_layout);
         mLayout.getBackground().setAlpha(130);      // 투명도 효과
 
     }

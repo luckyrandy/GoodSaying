@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Good Saying</string>
+    <string name="app_name">My Good Saying</string>
     <string name="action_settings">Setting Alarm</string>
     <string name="edit_hint">write your good saying</string>
     <string name="btn_save">Save</string>

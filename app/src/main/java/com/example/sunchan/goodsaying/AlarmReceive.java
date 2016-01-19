@@ -22,7 +22,7 @@ public class AlarmReceive extends BroadcastReceiver {   //BroadcastReceiver ê°€í
             return;
         }
 
-        String title = context.getString(R.string.app_name);
+        String title = context.getString(com.example.sunchan.goodsaying.R.string.app_name);
         String txt = mItem.getText();
 
         Intent intentAlarm = new Intent(context.getApplicationContext(), MainActivity.class);

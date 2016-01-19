@@ -74,14 +74,14 @@ public class ModifyActivity extends AppCompatActivity {
         mUserInput = mEditText.getText().toString();
 
         if (mUserInput == null || mUserInput.length() == 0) {
-            Toast.makeText(this, R.string.warn_text, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, com.example.sunchan.goodsaying.R.string.warn_text, Toast.LENGTH_SHORT).show();
             mEditText.requestFocus();       // focus on
             return;
         }
 
         db.updateItem(mId, mUserInput, mCount);
 
-        Toast.makeText(ModifyActivity.this, R.string.txt_update_done, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ModifyActivity.this, com.example.sunchan.goodsaying.R.string.txt_update_done, Toast.LENGTH_SHORT).show();
         finish();           // Activity 종료
     }
 
@@ -89,22 +89,22 @@ public class ModifyActivity extends AppCompatActivity {
     private AlertDialog createDialog() {
         AlertDialog.Builder ab = new AlertDialog.Builder(this);
 
-        ab.setTitle(R.string.btn_delete);
-        ab.setMessage(R.string.dial_del_msg);
+        ab.setTitle(com.example.sunchan.goodsaying.R.string.btn_delete);
+        ab.setMessage(com.example.sunchan.goodsaying.R.string.dial_del_msg);
         ab.setCancelable(false);
         //ab.setIcon(getResources().getDrawable(R.drawable.ic_launcher));
 
-        ab.setPositiveButton(R.string.btn_delete, new DialogInterface.OnClickListener() {
+        ab.setPositiveButton(com.example.sunchan.goodsaying.R.string.btn_delete, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 db.deleteItem(mId);
                 setDismiss(mDialog);
-                Toast.makeText(ModifyActivity.this, R.string.txt_delete_done, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ModifyActivity.this, com.example.sunchan.goodsaying.R.string.txt_delete_done, Toast.LENGTH_SHORT).show();
                 finish();           // Activity 종료
             }
         });
 
-        ab.setNegativeButton(R.string.txt_cancel, new DialogInterface.OnClickListener() {
+        ab.setNegativeButton(com.example.sunchan.goodsaying.R.string.txt_cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
                 setDismiss(mDialog);

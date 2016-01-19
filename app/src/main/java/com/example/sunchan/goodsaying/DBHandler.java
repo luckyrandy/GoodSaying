@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -78,8 +77,8 @@ public class DBHandler extends SQLiteOpenHelper {
         // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Log.d(TAG, "Text : " + item.getText());
-        Log.d(TAG, "Count : " + String.valueOf(item.getCount()));
+        //Log.d(TAG, "Text : " + item.getText());
+        //Log.d(TAG, "Count : " + String.valueOf(item.getCount()));
 
         // make values to be inserted
         ContentValues values = new ContentValues();
@@ -89,7 +88,7 @@ public class DBHandler extends SQLiteOpenHelper {
         // insert anniversary
         lResult = db.insert(table_name, null, values);
 
-        Log.d(TAG, "Insert result : " + lResult);
+        //Log.d(TAG, "Insert result : " + lResult);
 
         // close database transaction
         db.close();
@@ -148,9 +147,9 @@ public class DBHandler extends SQLiteOpenHelper {
         // get reference of the GOODSAYING database
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Log.d(TAG, "Id : " + id);
-        Log.d(TAG, "Text : " + text);
-        Log.d(TAG, "Count : " + count);
+        //Log.d(TAG, "Id : " + id);
+        //Log.d(TAG, "Text : " + text);
+        //Log.d(TAG, "Count : " + count);
 
         // make values to be inserted
         ContentValues values = new ContentValues();
@@ -298,9 +297,9 @@ public class DBHandler extends SQLiteOpenHelper {
         item.setText(cursor.getString(1));
         item.setCount(Integer.parseInt(cursor.getString(2)));
 
-        Log.d(TAG, "Id : " + String.valueOf(item.getId()));
-        Log.d(TAG, "Text : " + item.getText());
-        Log.d(TAG, "Count : " + String.valueOf(item.getCount()));
+        //Log.d(TAG, "Id : " + String.valueOf(item.getId()));
+        //Log.d(TAG, "Text : " + item.getText());
+        //Log.d(TAG, "Count : " + String.valueOf(item.getCount()));
 
         return item;
     }

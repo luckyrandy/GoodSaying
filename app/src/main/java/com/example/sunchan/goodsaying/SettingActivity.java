@@ -44,7 +44,7 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.alarm_layout);
+        setContentView(com.example.sunchan.goodsaying.R.layout.alarm_layout);
 
         setupViews();
 
@@ -75,7 +75,7 @@ public class SettingActivity extends AppCompatActivity {
 
             mTimeButton.setEnabled(false);
             mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
-            mTextView.setText(R.string.set_alarm_msg);
+            mTextView.setText(com.example.sunchan.goodsaying.R.string.set_alarm_msg);
         } else if (arItem.get(0).getFlag() == 0) {
             mSwitch.setChecked(false);
             // 이전 설정 시간으로 초기화
@@ -84,7 +84,7 @@ public class SettingActivity extends AppCompatActivity {
 
             mTimeButton.setEnabled(false);
             mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
-            mTextView.setText(R.string.set_alarm_off_msg);
+            mTextView.setText(com.example.sunchan.goodsaying.R.string.set_alarm_off_msg);
         } else if (arItem.get(0).getFlag() == 1) {
             mSwitch.setChecked(true);
 
@@ -93,7 +93,7 @@ public class SettingActivity extends AppCompatActivity {
 
             String time = String.format("%02d", iHour) + ":" +
                     String.format("%02d", iMin) + " " +
-                    getString(R.string.set_alarm_done_msg);
+                    getString(com.example.sunchan.goodsaying.R.string.set_alarm_done_msg);
             mTextView.setText(time);
         } else {
             mSwitch.setChecked(false);
@@ -105,7 +105,7 @@ public class SettingActivity extends AppCompatActivity {
 
             mTimeButton.setEnabled(false);
             mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
-            mTextView.setText(R.string.set_alarm_msg);
+            mTextView.setText(com.example.sunchan.goodsaying.R.string.set_alarm_msg);
         }
 
         //set the switch to ON
@@ -120,15 +120,15 @@ public class SettingActivity extends AppCompatActivity {
                     //Toast.makeText(SettingActivity.this, "Switch is currently ON", Toast.LENGTH_SHORT).show();
                     mTimeButton.setEnabled(true);
                     mTimeButton.setTextColor(Color.parseColor(mEnabledColor));
-                    mTextView.setText(R.string.set_alarm_msg);
+                    mTextView.setText(com.example.sunchan.goodsaying.R.string.set_alarm_msg);
                 } else {
                     //Toast.makeText(SettingActivity.this, "Switch is currently OFF", Toast.LENGTH_SHORT).show();
                     mTimeButton.setEnabled(false);
                     mTimeButton.setTextColor(Color.parseColor(mDisabledColor));
                     cancelAlarm();
-                    mTextView.setText(R.string.set_alarm_off_msg);
+                    mTextView.setText(com.example.sunchan.goodsaying.R.string.set_alarm_off_msg);
 
-                    Toast.makeText(SettingActivity.this, R.string.set_alarm_off_msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SettingActivity.this, com.example.sunchan.goodsaying.R.string.set_alarm_off_msg, Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -146,24 +146,24 @@ public class SettingActivity extends AppCompatActivity {
 
 
     private void setupViews() {
-        mSwitch = (Switch) findViewById(R.id.alarm_set);
-        mTimeButton = (Button) findViewById(R.id.btn_time);
-        mTextView = (TextView) findViewById(R.id.text_view);
+        mSwitch = (Switch) findViewById(com.example.sunchan.goodsaying.R.id.alarm_set);
+        mTimeButton = (Button) findViewById(com.example.sunchan.goodsaying.R.id.btn_time);
+        mTextView = (TextView) findViewById(com.example.sunchan.goodsaying.R.id.text_view);
 
-        mToolBar = (Toolbar) findViewById(R.id.sub_toolbar);
+        mToolBar = (Toolbar) findViewById(com.example.sunchan.goodsaying.R.id.sub_toolbar);
         setSupportActionBar(mToolBar);
         //mToolBar.setNavigationIcon(R.drawable.ic_chevron_left_black_24dp);
         /* It doesn't work
         mToolBar.setTitle(R.string.set_alarm_title);
         */
-        getSupportActionBar().setTitle(R.string.set_alarm_title);   /* It works */
+        getSupportActionBar().setTitle(com.example.sunchan.goodsaying.R.string.set_alarm_title);   /* It works */
     }
 
 
     public void onButtonClick(View view) {
         // 버튼 ID를 가져온다.
         switch (view.getId()) {
-            case R.id.btn_time:                // 시간 설정 버튼
+            case com.example.sunchan.goodsaying.R.id.btn_time:                // 시간 설정 버튼
                 /*
                 final Calendar c = Calendar.getInstance();
                 iHour = c.get(Calendar.HOUR_OF_DAY);
@@ -190,7 +190,7 @@ public class SettingActivity extends AppCompatActivity {
 
             String time = String.format("%02d", iHour) + ":" +
                           String.format("%02d", iMin) + " " +
-                          getString(R.string.set_alarm_done_msg);
+                          getString(com.example.sunchan.goodsaying.R.string.set_alarm_done_msg);
 
             mTextView.setText(time);
 
